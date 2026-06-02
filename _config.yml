@@ -117,7 +117,7 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: 95YHMoon/95YHMoon.github.io# <gh-username>/<repo>
+    repo: 95YHMoon/95YHMoon.github.io # <gh-username>/<repo>
     repo_id:  R_kgDOMQC1pw
     category: Announcements
     category_id:  DIC_kwDOMQC1p84C-WHJ
