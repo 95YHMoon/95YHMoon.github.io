@@ -118,9 +118,9 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: 95YHMoon/95YHMoon.github.io# <gh-username>/<repo>
-    repo_id:
+    repo_id:  R_kgDOMQC1pw
     category: Announcements
-    category_id:
+    category_id:  DIC_kwDOMQC1p84C-WHJ
     mapping: pathname# optional, default to 'pathname'
     strict: # optional, default to '0'
     input_position: # optional, default to 'bottom'
