@@ -94,6 +94,12 @@
       {% endif %}
     {% endfor %}
   </div>
+  <div>전체 방문수: <span id="site-total">…</span></div>
+<script>
+  fetch('https://95yhmoon.goatcounter.com/counter/TOTAL.json')
+    .then(r => r.json())
+    .then(d => { document.getElementById('site-total').innerText = d.count; });
+</script>
   <!-- .sidebar-bottom -->
 </aside>
 <!-- #sidebar -->
