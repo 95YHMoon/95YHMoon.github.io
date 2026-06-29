@@ -1,0 +1,15 @@
+<!-- Total site visitors (GoatCounter) -->
+{% if site.analytics.goatcounter.id %}
+  <section id="site-visitors">
+    <h2 class="panel-heading">방문자 수</h2>
+    <p class="content ps-0 pb-1 ms-1 mt-2 mb-0">
+      누적 <span id="site-visitor-count">…</span>
+    </p>
+  </section>
+  <script>
+    fetch('https://{{ site.analytics.goatcounter.id }}.goatcounter.com/counter/TOTAL.json')
+      .then(function (r) { return r.json(); })
+      .then(function (d) { document.getElementById('site-visitor-count').innerText = d.count; })
+      .catch(function () { document.getElementById('site-visitor-count').innerText = '—'; });
+  </script>
+{% endif %}
