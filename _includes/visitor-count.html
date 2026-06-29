@@ -1,10 +1,10 @@
 <!-- Total site visitors (GoatCounter) -->
 {% if site.analytics.goatcounter.id %}
-  <section id="site-visitors">
+  <section>
     <h2 class="panel-heading">방문자 수</h2>
-    <p class="content ps-0 pb-1 ms-1 mt-2 mb-0">
-      누적 <span id="site-visitor-count">…</span>
-    </p>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      누적 방문&nbsp;<span id="site-visitor-count">…</span>
+    </div>
   </section>
   <script>
     fetch('https://{{ site.analytics.goatcounter.id }}.goatcounter.com/counter/TOTAL.json')
