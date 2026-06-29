@@ -43,6 +43,12 @@ layout: compress
               {% assign _include_path = _include | append: '.html' %}
               {% include {{ _include_path }} lang=lang %}
             {% endfor %}
+
+            {% for _include in layout.panel_includes %}
+            {% assign _include_path = _include | append: '.html' %}
+            {% include {{ _include_path }} lang=lang %}
+            {% endfor %}
+            {% include visitor-count.html %}   <!-- 추가 -->
           </aside>
         </div>
 
@@ -65,11 +71,6 @@ layout: compress
         <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
           <i class="fas fa-angle-up"></i>
         </button>
-        {% for _include in layout.panel_includes %}
-        {% assign _include_path = _include | append: '.html' %}
-        {% include {{ _include_path }} lang=lang %}
-        {% endfor %}
-        {% include visitor-count.html %}   <!-- 추가 -->
       </aside>
     </div>
 
