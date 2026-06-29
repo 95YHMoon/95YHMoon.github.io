@@ -1,7 +1,7 @@
 ---
 title: "그래프 신경망 정리: GNN(GCN) · GraphSAGE · GAT"
 date: 2026-04-25 21:00:00 +0900
-categories: [Machine Learning, Graph Neural Network]
+categories: [Data Science, GNN ]
 tags: [gnn, gcn, graphsage, gat, message-passing, attention]
 math: true
 ---
