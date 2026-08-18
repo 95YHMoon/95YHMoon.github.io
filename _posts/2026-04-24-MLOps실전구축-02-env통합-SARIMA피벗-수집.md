@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[MLOps 실전 구축] 2. .env 통합, SARIMA로의 피벗, 수집 단계"
+title: "[MLOps 실전 구축] 02_ .env 통합, SARIMA로의 피벗, 수집 단계"
 series: "MLOps 실전 구축"
 date: 2026-04-24
 categories: [Data Engineer, MLops]
@@ -23,9 +23,7 @@ tags: [mlflow, docker-compose, dotenv, sarima, ecount]
 
 ## 2. 학습 대상을 Transformer → SARIMA로
 
-1편에서는 기존 Transformer(멀티헤드 어텐션 + month embedding)를 학습 단계 대상으로 잡았었다. 그런데 저장소를 다시 뒤져보니, 정작 그 Transformer 결과가 잘 안 나와서 이미 SARIMA를 베이스로 골라뒀던 흔적이 여기저기 있었다. 같은 데이터로 스텝별 정상성 검정·차분·AIC 비교까지 마친 R 스크립트가 있었고, 파이썬 쪽에도 `pmdarima.auto_arima` 자동 차수 탐색과 수동 지정을 둘 다 지원하는, 꽤 잘 만들어진 `SARIMAModel` 래퍼가 이미 있었다.
-
-그래서 계획을 바꿨다. Transformer를 새로 포팅하는 대신 이미 있는 `SARIMAModel`을 재사용하기로 했다. 다만 이 파일을 통째로 import하면 비교용 무거운 의존성(torch, prophet 등)이 딸려오기 때문에, 필요한 클래스만 뽑아 별도 모듈로 분리했다. auto_arima 모드로 스모크 테스트까지 통과했다.
+기존 Transformer(멀티헤드 어텐션 + weekly embedding)를 학습 단계 대상으로 잡았었다. 정작 그 Transformer 결과가 잘 안 나와서 이미 SARIMA를 베이스로 결정핻 두었고.. 같은 데이터로 스텝별 정상성 검정·차분·AIC 비교까지 마친 모델을 바탕으로, `SARIMAModel`을 재사용하기로 했다. 이 파일을 통째로 import하면 비교용 무거운 의존성(torch, prophet 등)이 딸려오기 때문에, 필요한 클래스만 뽑아 별도 모듈로 분리했다.
 
 ```python
 m = SARIMAModel()      # order=None → auto_arima 모드
@@ -34,7 +32,6 @@ print(m.order_str)     # 예: ARIMA(0,1,1)(2,0,1)[12] [auto]
 print(m.predict(6))    # 6개월 예측
 ```
 
-이 피벗 덕에 `pipeline` 이미지도 한결 가벼워졌다. TensorFlow 계열 없이 statsmodels + pmdarima + 표준 데이터 스택이면 된다. (statsmodels는 특정 버전에서 최신 scipy와 임포트 충돌이 있어서, 로컬에서 검증된 조합으로 고정하는 정도의 손질만 필요했다.) 이 이미지로 실제 run을 찍어서, postgres에 파라미터·메트릭이 남는지, 아티팩트 프록시 업로드가 되는지까지 확인했다.
 
 ## 3. 수집 단계 (`collect.py`)
 
@@ -55,6 +52,4 @@ def main() -> None:
     validate(dest)                               # 복사본을 검증
 ```
 
-## 다음 편
 
-이제 남은 건 파이프라인 본체다. 전처리 → 학습 → 서빙을 붙여서 네 단계를 실제로 한 바퀴 돌리는 게 3편의 목표다.
