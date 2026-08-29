@@ -1,7 +1,7 @@
 ---
 title: n8n으로 반복 작업을 파이프라인으로 묶기
 date: 2026-08-27 20:30:00 +0900
-categories: [Data Engineering, n8n]
+categories: [Data Engineer, n8n]
 tags: [n8n, workflow-automation, docker, devops]
 ---
 

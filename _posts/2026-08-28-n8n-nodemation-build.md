@@ -1,7 +1,7 @@
 ---
 title: n8n(nodemation) 컨테이너 빌드 기록
 date: 2026-08-28 20:30:00 +0900
-categories: [Infra, n8n]
+categories: [Data Engineer, n8n]
 tags: [n8n, nodemation, docker, build-log]
 ---
 
