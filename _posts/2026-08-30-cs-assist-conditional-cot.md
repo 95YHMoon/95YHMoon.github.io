@@ -6,7 +6,8 @@ tags: [n8n, RAG, CoT, 리랭커, Qdrant, 프롬프트]
 ---
 
 어제 18건 중 14건(77.8%)을 맞혔다. 오늘은 88.9%까지 상승.
-![alt text](n8n_상담어시스턴트_img_1.png)
+![상담 어시스턴트 정확도 비교](/assets/img/posts/2026-08-30-cs-assist-accuracy.png)
+_정답률 77.8% → 88.9%_
 
 ## 어디를 고쳐야 하는지부터
 
