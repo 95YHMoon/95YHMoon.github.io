@@ -3,7 +3,7 @@ title: "재고 라벨 인식 파이프라인 만들기 (1) — 문제 정의와 
 date: 2025-09-23 20:00:00 +0900
 categories: [Data Science, ML·DL]
 tags: [donut, yolo, ocr, document-ai, pipeline]
-img_path: /assets/img/posts/
+media_subpath: /assets/img/posts/
 ---
 
 ## 수작업 입력 자동화
