@@ -44,7 +44,7 @@ media_subpath: /assets/img/posts/
 따라서 라벨 영역을 잘라내고 정방향으로 펴주는 전처리 모듈을 추가하여 파이프라인을 3단계로 구성했다.
 
 ![라벨 검출](2025-09-23-label-pipeline-1_yolo01.jpg)
-_라벨 검출 예시_
+_SynthDoG 생성 이미지 + 라벨 검출 예시_
 
 ```
 → ① 라벨 검출 (YOLO-OBB)
