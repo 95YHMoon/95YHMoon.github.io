@@ -3,6 +3,7 @@ title: "재고 라벨 인식 파이프라인 만들기 (1) — 문제 정의와 
 date: 2025-09-23 20:00:00 +0900
 categories: [Data Science, ML·DL]
 tags: [donut, yolo, ocr, document-ai, pipeline]
+img_path: /assets/img/posts/
 ---
 
 ## 수작업 입력 자동화
@@ -43,7 +44,9 @@ tags: [donut, yolo, ocr, document-ai, pipeline]
 따라서 라벨 영역을 잘라내고 정방향으로 펴주는 전처리 모듈을 추가하여 파이프라인을 3단계로 구성했다.
 
 ```
-![라벨 검출](./assets/img/2025-09-23-label-pipeline-1_yolo01.jpg)
+![라벨 검출](2025-09-23-label-pipeline-1_yolo01.jpg)
+_라벨 검출 예시_
+
 → ① 라벨 검출 (YOLO-OBB)
 → ② 크롭 및 평탄화 (Perspective Transform)
 → ③ 구조화 추출 (Donut)
