@@ -43,7 +43,7 @@ tags: [donut, yolo, ocr, document-ai, pipeline]
 따라서 라벨 영역을 잘라내고 정방향으로 펴주는 전처리 모듈을 추가하여 파이프라인을 3단계로 구성했다.
 
 ```
-사진 
+![라벨 검출](./assets/img/2025-09-23-label-pipeline-1_yolo01.jpg)
 → ① 라벨 검출 (YOLO-OBB)
 → ② 크롭 및 평탄화 (Perspective Transform)
 → ③ 구조화 추출 (Donut)
