@@ -1,15 +1,15 @@
 ---
-title: n8n(nodemation) 컨테이너 빌드 기록
+title: n8n 컨테이너 빌드 및 스택 구성 기록
 date: 2026-08-28 20:30:00 +0900
 categories: [Data Engineer, n8n]
 tags: [n8n, nodemation, docker, build-log]
 ---
 
-지난 글에서 정리한 n8n(nodemation)을 실제로 기존 docker-compose 스택에 붙여봤다. 개념 정리와 실제 빌드 사이에는 항상 몇 가지 확인할 게 남기 마련이라, 이번엔 그 과정만 짧게 남겨둔다.
+기존 Docker Compose 기반 스택(Qdrant, PostgreSQL, Streamlit)에 n8n 서비스를 추가한 과정 기록.
 
-## docker-compose에 서비스 추가
+## docker-compose 서비스 추가
 
-기존에 qdrant, postgres, streamlit 세 서비스가 떠 있는 스택에 n8n 서비스 하나를 그대로 추가했다.
+`docker-compose.yml` 파일에 n8n 서비스를 다음과 같이 구성했다.
 
 ```yaml
 n8n:
@@ -33,36 +33,26 @@ n8n:
     - qwen_net
 ```
 
-기본 이미지는 인증이 꺼져 있는 상태로 뜨기 때문에, `N8N_BASIC_AUTH_ACTIVE`를 켜고 계정 정보를 환경변수로 뺐다. 워크플로우 데이터는 `n8n_data` 볼륨에 남도록 해서 컨테이너를 내렸다 올려도 작업한 내용이 사라지지 않게 했다.
+- 보안을 위해 N8N_BASIC_AUTH_ACTIVE를 활성화하고 인증 정보를 환경변수로 분리
+- 워크플로우 및 노드 설정 유지를 위해 n8n_data 볼륨을 마운트
 
-## 기동 확인
-
-```
+```bash
 docker compose up -d n8n
 docker ps --filter "name=qwen_n8n"
 ```
 
+헬스체크
 ```
 NAMES      STATUS         PORTS
 qwen_n8n   Up 5 seconds   0.0.0.0:5678->5678/tcp
 ```
 
-헬스체크 엔드포인트로 응답도 확인
+## 런타임 제약사항 및 대안
+n8n 공식 Docker 이미지는 Node.js 환경 기반이므로 기본적으로 Python 런타임이 포함되어 있지 않다. 따라서 Execute Command 노드를 통해 컨테이너 내부에서 Python 스크립트를 직접 호출할 수 없다.
 
-```
-curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5678/healthz
-200
-```
+이를 해결하기 위한 구조적 선택지는 두 가지다.
 
-여기까지는 별문제 없이 끝났다.
+1. 외부 API 서버 분리 : Python 스크립트 연산부를 별도 API(FastAPI 등) 컨테이너로 띄우고, n8n에서는 HTTP Request 노드로 호출
+2. 커스텀 이미지 빌드: n8n 베이스 이미지에 Python 및 관련 의존 패키지를 추가 설치한 Dockerfile을 직접 빌드
 
-## 확인해야 했던 제약 하나
-
-n8n 공식 이미지는 Node.js 베이스라 **Python이 들어있지 않다.** 개념 정리 글에서는 "Execute Command 노드로 스크립트를 직접 실행한다"고 썼는데, 지금 올린 컨테이너 안에서는 그게 안 된다는 뜻이다.
-
-선택지는 두 가지다.
-
-- 매칭 스크립트를 감싸는 작은 API 서버(FastAPI 등)를 따로 띄우고, n8n은 HTTP Request 노드로 그 API만 호출
-- n8n 이미지 위에 Python과 필요한 의존성을 얹은 커스텀 이미지를 빌드
-
-전자가 구조도 단순하고, 스크립트가 늘어나도 엔드포인트만 추가하면 되니 확장성도 낫다. 
+연산 로직과 오케스트레이션의 결합도를 낮추고 모듈 확장성을 확보하기 위해 API 분리 방식으로 파이프라인을 구성
