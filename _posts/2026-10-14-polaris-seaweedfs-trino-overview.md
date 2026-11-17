@@ -51,12 +51,12 @@ PostgreSQL (polaris DB)                  SeaweedFS (s3://lake/raw/smoke_test-8e7
 ┌───────────────────────────────┐       ├── metadata/
 │ smoke_test → 00002-....json   │──────→│   ├── 00000-....metadata.json   (Schema Init)
 └───────────────────────────────┘       │   ├── 00001-....metadata.json   (Snapshot 1)
-      ↑ Polaris가 포인터 관리             │   ├── 00002-....metadata.json   (Snapshot 2 - Current)
-                                         │   ├── snap-....avro             (Manifest List)
-                                         │   └── ....-m0.avro              (Manifest File)
-                                         └── data/
-                                             ├── ....parquet               (Data Parquet 1)
-                                             └── ....parquet               (Data Parquet 2)
+      ↑ Polaris가 포인터 관리           │   ├── 00002-....metadata.json   (Snapshot 2 - Current)
+                                        │   ├── snap-....avro             (Manifest List)
+                                        │   └── ....-m0.avro              (Manifest File)
+                                        └── data/
+                                            ├── ....parquet               (Data Parquet 1)
+                                            └── ....parquet               (Data Parquet 2)
 ```
 
 ```mermaid
