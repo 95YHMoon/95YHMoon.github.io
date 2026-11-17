@@ -3,7 +3,6 @@ title: "[데이터 파이프라인 #5] Trino 분산 쿼리 엔진 구축과 JVM 
 date: 2026-10-13 19:00:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [trino, iceberg, sql, query-engine, distributed-computing]
-description: 데이터를 자체 저장하지 않고 메타데이터 연동 및 객체 스토리지 파싱을 통해 분산 컴퓨팅을 수행하는 Trino 쿼리 엔진의 동작 구조와 JVM 메모리 최적화 과정을 다룬다.
 mermaid: true
 ---
 

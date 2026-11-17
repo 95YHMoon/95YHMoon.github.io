@@ -3,7 +3,6 @@ title: "[데이터 파이프라인 #1] Apache Polaris와 데이터 레이크하�
 date: 2026-10-13 15:00:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [polaris, iceberg, catalog, rbac, data-architecture]
-description: 물리적 데이터 저장을 담당하지 않고 메타데이터의 트랜잭션 일관성과 RBAC 권한 제어만을 수행하는 Apache Polaris REST Catalog의 구축 과정과 트러블슈팅을 다룬다.
 mermaid: true
 ---
 

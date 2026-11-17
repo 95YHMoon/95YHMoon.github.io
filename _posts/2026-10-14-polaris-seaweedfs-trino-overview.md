@@ -3,7 +3,6 @@ title: "[데이터 파이프라인 #6] Polaris · SeaweedFS · Trino 기반 데�
 date: 2026-10-14 10:00:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [polaris, seaweedfs, trino, iceberg, lakehouse, architecture]
-description: 객체 스토리지, REST Catalog, 분산 쿼리 엔진이 결합해 단일한 Iceberg 테이블을 구성하는 엔드투엔드 메커니즘과 장애 복구 시나리오를 정리한다.
 pin: true
 mermaid: true
 ---

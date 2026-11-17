@@ -1,9 +1,9 @@
 ---
-title: "[데이터 파이프라인 #0] Airflow와 Iceberg(Polaris) 로컬 환경 연동 기록"
+title: "[데이터 파이프라인 #0] Airflow와 Iceberg(Polaris) 환경 연동 기록"
 date: 2026-10-13 12:00:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [airflow, pyiceberg, iceberg, docker-compose, data-engineering]
-description: 기존 Airflow 환경을 Apache Iceberg 저장층(Polaris + SeaweedFS)에 맞춰 재설계하고, 제한된 리소스 환경에 맞춘 컨테이너 최적화 및 보안 강화 기법을 다룬다.
+mermaid: true
 ---
 
 #### 개요
