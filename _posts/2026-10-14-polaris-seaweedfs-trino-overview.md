@@ -23,18 +23,19 @@ mermaid: true
 | **컨테이너 주소** | `seaweedfs:8333` | `polaris:8181` | `trino:8080` |
 | **유실 시 영향** | **물리 데이터 영구 손실** | PostgreSQL 내 포인터 재등록을 통해 복구 가능 | 컨테이너 재시작으로 즉시 복구 |
 
-##### 도서관 시스템 비유
-- **SeaweedFS (서고)**: 서가에 물리적으로 진열된 실물 도서 본문
-- **Polaris + PostgreSQL (도서 카탈로그 카드함)**: 도서의 최신 개정판 위치를 명시한 검색 카드
-- **Trino (사서)**: 이용자의 요청을 받아 카드를 확인한 뒤 서고에서 책을 찾아 결과를 도출하는 사서
-- **Superset / Airflow (이용자)**: 사서에게 질의를 전달하거나 신간 도서를 납품하는 이용자
+##### 컴포넌트 간 상호작용 구조
+
+- **SeaweedFS (실제 데이터 파일 저장소)**: 쿼리 결과로 만들어진 실제 `.parquet` 파일들이 물리적으로 쌓이는 디스크 공간.
+- **Polaris + PostgreSQL (최신 상태 포인터 / 주소 장부)**: Git의 포인터처럼 "현재 이 테이블의 최신 상태를 구성하는 메타데이터 파일은 이것이다"라고 가리키는 주소 관리 레이어.
+- **Trino (연산 처리 엔진)**: 주소 장부(Polaris)를 먼저 확인해 최신 파일 위치를 파악한 뒤, 저장소(SeaweedFS)에서 해당 파일들만 병렬로 읽어와 SQL 연산을 수행하는 순수 계산기.
+- **Superset / Airflow (상위 인터페이스)**: 연산 엔진(Trino)으로 쿼리를 던져 시각화를 수행하거나(Superset), 저장소에 원본 데이터를 적재하는(Airflow) 실무 주체.
 
 ```mermaid
 flowchart LR
-    AF["Airflow<br/>납품"] --> PO["Polaris + PostgreSQL<br/>카드함"]
-    TR["Trino<br/>사서"] --> PO
-    SS["Superset<br/>이용자"] --> TR
-    AF --> SW[("SeaweedFS<br/>서고")]
+    AF["Airflow<br/>데이터 적재"] --> PO["Polaris + PostgreSQL<br/>(최신 파일 주소록)"]
+    TR["Trino<br/>(연산 처리기)"] --> PO
+    SS["Superset<br/>(BI 조회)"] --> TR
+    AF --> SW[("SeaweedFS<br/>(Parquet 파일 저장소)")]
     TR --> SW
     PO --> SW
 ```
