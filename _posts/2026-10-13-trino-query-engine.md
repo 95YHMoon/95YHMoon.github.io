@@ -1,7 +1,7 @@
 ---
 title: "[데이터 파이프라인 구축기 0단계] Trino — 데이터 분산 계산 전담 SQL 쿼리 엔진 구축 및 실행 메커니즘"
 date: 2026-10-13 16:00:00 +0900
-categories: [Data Platform, Infrastructure]
+categories: [Data Engineer, Infrastructure]
 tags: [trino, iceberg, sql, query-engine, distributed-computing]
 description: 데이터를 자체 저장하지 않고 메타데이터 연동 및 객체 스토리지 파싱을 통해 분산 컴퓨팅을 수행하는 Trino 쿼리 엔진의 동작 구조와 자바 힙 메모리 최적화를 설명한다.
 mermaid: true

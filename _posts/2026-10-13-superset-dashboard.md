@@ -1,7 +1,7 @@
 ---
 title: "[데이터 파이프라인 #4] Apache Superset과 Trino 기반 대시보드 시각화 연동"
 date: 2026-10-13 18:00:00 +0900
-categories: [Data Platform, Infrastructure]
+categories: [Data Engineer, Infrastructure]
 tags: [superset, trino, dashboard, docker-network, bi]
 description: Apache Superset 시각화 도구를 Trino 연동 시 발생할 수 있는 네트워크, DB 드라이버, 카탈로그 네이밍 관련 3대 트러블슈팅 사례와 해결 과정을 다룬다.
 mermaid: true

@@ -1,7 +1,7 @@
 ---
 title: "[데이터 파이프라인 #2] PostgreSQL 메타데이터 스토어 구성과 멱등성(Idempotency) 보장"
 date: 2026-10-13 14:00:00 +0900
-categories: [Data Platform, Infrastructure]
+categories: [Data Engineer, Infrastructure]
 tags: [postgresql, docker-compose, idempotency, metadata-store]
 description: 플랫폼 내 주요 오케스트레이션 및 카탈로그 도구의 상태를 관리하는 PostgreSQL의 역할과 컨테이너 재시작 시 멱등성을 보장하는 자동화 초기화 방식을 정리한다.
 mermaid: true

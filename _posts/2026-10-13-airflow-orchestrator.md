@@ -1,7 +1,7 @@
 ---
 title: "[데이터 파이프라인 구축기 0단계] Airflow를 신규 Iceberg 저장층에 연동하는 최적화 가이드"
 date: 2026-10-13 17:00:00 +0900
-categories: [Data Platform, Infrastructure]
+categories: [Data Engineer, Infrastructure]
 tags: [airflow, pyiceberg, iceberg, docker-compose, data-engineering]
 description: 기존 Airflow 환경을 Apache Iceberg 저장층(Polaris + SeaweedFS)에 맞춰 재설계하고, 제한된 리소스 환경에 맞춘 컨테이너 최적화 및 보안 강화 기법을 다룬다.
 mermaid: true

@@ -1,7 +1,7 @@
 ---
 title: "[데이터 파이프라인 #3] SeaweedFS 객체 스토리지 구축과 Iceberg 물리 파일 구조"
 date: 2026-10-13 14:30:00 +0900
-categories: [Data Platform, Infrastructure]
+categories: [Data Engineer, Infrastructure]
 tags: [seaweedfs, s3, object-storage, iceberg, data-engineering]
 description: MinIO의 라이선스 및 정책 변동에 따른 대체재로 SeaweedFS를 선정한 배경과 분산 스토리지 내 적재되는 Apache Iceberg의 물리적 파일 구조를 분석한다.
 mermaid: true
