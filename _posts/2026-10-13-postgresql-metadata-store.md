@@ -1,5 +1,5 @@
 ---
-title: "[데이터 파이프라인 #2] PostgreSQL 메타데이터 스토어 구성과 멱등성(Idempotency) 보장"
+title: "[데이터 파이프라인 #2] PostgreSQL 메타데이터 스토어, 멱등성"
 date: 2026-10-13 15:30:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [postgresql, docker-compose, idempotency, metadata-store]

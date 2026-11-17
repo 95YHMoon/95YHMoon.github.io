@@ -1,5 +1,5 @@
 ---
-title: "[데이터 파이프라인 #3] SeaweedFS 객체 스토리지 구축과 Iceberg 물리 파일 구조"
+title: "[데이터 파이프라인 #3] SeaweedFS 객체 스토리지, Iceberg 파일 구조"
 date: 2026-10-13 16:30:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [seaweedfs, s3, object-storage, iceberg, data-engineering]

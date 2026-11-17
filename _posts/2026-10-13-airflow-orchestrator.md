@@ -1,5 +1,5 @@
 ---
-title: "[데이터 파이프라인 #0] Airflow와 Iceberg(Polaris) 환경 연동 기록"
+title: "[데이터 파이프라인 #0] Airflow와 Iceberg 환경 연동"
 date: 2026-10-13 12:00:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [airflow, pyiceberg, iceberg, docker-compose, data-engineering]

@@ -1,5 +1,5 @@
 ---
-title: "[데이터 파이프라인 #5] Trino 분산 쿼리 엔진 구축과 JVM 메모리 튜닝"
+title: "[데이터 파이프라인 #5] Trino 분산 쿼리 엔진, JVM 메모리 튜닝"
 date: 2026-10-13 19:00:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [trino, iceberg, sql, query-engine, distributed-computing]

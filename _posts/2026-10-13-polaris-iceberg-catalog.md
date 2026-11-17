@@ -1,5 +1,5 @@
 ---
-title: "[데이터 파이프라인 #1] Apache Polaris와 데이터 레이크하우스 REST Catalog 구축"
+title: "[데이터 파이프라인 #1] Apache Polaris, 레이크하우스 REST Catalog"
 date: 2026-10-13 15:00:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [polaris, iceberg, catalog, rbac, data-architecture]

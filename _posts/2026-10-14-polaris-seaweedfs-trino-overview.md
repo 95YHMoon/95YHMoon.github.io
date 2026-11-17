@@ -1,5 +1,5 @@
 ---
-title: "[데이터 파이프라인 #6] Polaris · SeaweedFS · Trino 기반 데이터 레이크하우스 통합 아키텍처"
+title: "[데이터 파이프라인 #6] 데이터 레이크하우스 통합 아키텍처"
 date: 2026-10-14 10:00:00 +0900
 categories: [Data Engineer, Infrastructure]
 tags: [polaris, seaweedfs, trino, iceberg, lakehouse, architecture]
