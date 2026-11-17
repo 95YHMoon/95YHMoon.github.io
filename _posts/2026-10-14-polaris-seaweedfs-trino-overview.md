@@ -47,18 +47,19 @@ flowchart LR
 `iceberg.raw.smoke_test` 테이블을 구성하는 메타데이터 포인터의 실제 추적 흐름은 다음과 같다.
 
 ```text
-PostgreSQL (polaris DB)                  SeaweedFS (s3://lake/raw/smoke_test-8e7e.../)
+PostgreSQL (polaris DB)                 SeaweedFS (s3://lake/raw/smoke_test-8e7e.../)
 ┌───────────────────────────────┐       ├── metadata/
-│ smoke_test → 00002-....json   │──────→│   ├── 00000-....metadata.json   (Schema Init)
+│ smoke_test -> 00002-....json  │──────>│   ├── 00000-....metadata.json   (Schema Init)
 └───────────────────────────────┘       │   ├── 00001-....metadata.json   (Snapshot 1)
-      ↑ Polaris가 포인터 관리           │   ├── 00002-....metadata.json   (Snapshot 2 - Current)
+                                        │   ├── 00002-....metadata.json   (Snapshot 2 - Current)
                                         │   ├── snap-....avro             (Manifest List)
                                         │   └── ....-m0.avro              (Manifest File)
                                         └── data/
                                             ├── ....parquet               (Data Parquet 1)
                                             └── ....parquet               (Data Parquet 2)
-```
 
+* PostgreSQL의 smoke_test 행이 현재 metadata 파일(00002)을 가리키고, 이 포인터는 Polaris가 관리
+```
 ```mermaid
 flowchart LR
     A[("PostgreSQL<br/>메타데이터 포인터")] --> B["metadata.json<br/>설계도"]
